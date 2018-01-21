@@ -1,31 +1,101 @@
-swagger: "2.0"
-
+---
 info:
-  version: 1.0.0
-  title: Demo Rest API
   description: Demo de una Rest Api
-
-schemes:
-  - http
+  title: Demo Rest API
+  version: 1.0.0
 host: localhost:3000
-basePath: /
-
-paths: 
-  /hello:
-    # binds swagger app logic to a route
-    x-swagger-router-controller: hello_world
+basePath: '/'
+produces:
+- application/json
+schemes:
+- http
+swagger: '2.0'
+paths:
+  /articles:
     get:
-      description: Returns 'Hello' to the caller
-      # used as the method name of the controller
-      operationId: hello
-      parameters:
-        - name: name
-          in: query
-          description: The name of the person to whom to say hello
-          required: false
-          type: string
+      parameters: []
+      description: Esta funcion devuelve articulos obtenidos desde la base de datos
+      tags:
+      - 'articulos '
       responses:
-        "200":
-          description: Success
-          schema:
-            # a pointer to a definition
+        200:
+          description: "Lista de articulos"
+  /posts:
+    get:
+      parameters: []
+      description: Esta funcion devuelve la lista de posts
+      tags:
+      - 'posts '
+      responses:
+        200:
+          description: " Lista de articulos"
+    post:
+      parameters: []
+      description: Esta funcion crea un post
+      tags:
+      - 'posts '
+      responses:
+        201:
+          description: " {}"
+  /posts/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Esta funcion devuelve un post especifico filtrado por id
+      tags:
+      - 'posts '
+      responses:
+        200:
+          description: " post"
+    put:
+      parameters: 
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Esta funcion modifica un post
+      tags:
+      - 'posts '
+      responses:
+        201:
+          description: " {}"
+    patch:
+      parameters: 
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Esta funcion modifica un atributos especificos de un post
+      tags:
+      - 'posts '
+      responses:
+        201:
+          description: " {}"
+    delete:
+      parameters: 
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Esta funcion borra un post
+      tags:
+      - 'posts '
+      responses:
+        202:
+          description: " {}"
+definitions: {}
+responses: {}
+parameters: {}
+securityDefinitions: {}
+tags:
+- name: 'articulos '
+  description: " Operacion con articulos"
+- name: 'posts '
+  description: " Operaciones con Posts"

@@ -1,5 +1,6 @@
 const express = require('express');
 const glob = require('glob');
+const YAML = require('yamljs');
 
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -9,7 +10,10 @@ const compress = require('compression');
 const methodOverride = require('method-override');
 const exphbs  = require('express-handlebars');
 
-const expressOasGenerator = require("express-oas-generator");
+const swaggerUi = require("swagger-ui-express");
+
+const swaggerDocument = YAML.load('./api/swagger/swagger.yaml');
+
 
 module.exports = (app, config) => {
   const env = process.env.NODE_ENV || 'development';
@@ -35,7 +39,8 @@ module.exports = (app, config) => {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
-  expressOasGenerator.init(app, {});
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach((controller) => {
@@ -48,6 +53,9 @@ module.exports = (app, config) => {
     next(err);
   });
 
+  /**
+   * Middleware para manejo de error 
+   */
   if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
       res.status(err.status || 500);
@@ -57,16 +65,12 @@ module.exports = (app, config) => {
         title: 'error'
       });
     });
-  }
-
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {},
-      title: 'error'
+  } else {
+    app.use((err, req, res, next) => {
+      res.status(err.status || 500);
+      res.render("error", { message: err.message, error: {}, title: "error" });
     });
-  });
+  }
 
   return app;
 };
