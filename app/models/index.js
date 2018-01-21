@@ -8,6 +8,9 @@ const sequelize = new Sequelize(config.db, {
   storage: config.storage
 });
 
+/**
+ * Se obtienen los modelos definidos y sincroniza la BD
+ */
 fs.readdirSync(__dirname)
   .filter((file) => (file.indexOf('.') !== 0) && (file !== 'index.js'))
   .forEach((file) => {
