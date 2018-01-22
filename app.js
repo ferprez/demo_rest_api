@@ -8,6 +8,9 @@ const app = express();
 
 module.exports = require('./config/express')(app, config);
 
+/**
+ * Inicializa la BD con las configuraciones y sincroniza los modelos
+ */
 db.sequelize
   .sync()
   .then(() => {

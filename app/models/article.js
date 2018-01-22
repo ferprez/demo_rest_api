@@ -4,9 +4,18 @@
 module.exports = (sequelize, DataTypes) => {
 
   const Article = sequelize.define('Article', {
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    text: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    text: {
+      allowNull: false,
+      type: DataTypes.STRING
+    }
   }, {
     classMethods: {
       associate: (models) => {
