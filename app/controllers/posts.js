@@ -8,7 +8,7 @@ const constants = require('../util/constants');
 const resourceEndPoint = `${constants.api_url}/posts`;
 const headers = { "Content-type": "application/json; charset=UTF-8" };
 
-module.exports = app => {
+module.exports = (app) => {
   app.use("/", router);
 };
 

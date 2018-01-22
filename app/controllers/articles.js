@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const path = require("path");
+const passport = require('passport');
 
-module.exports = app => {
+module.exports = (app) => {
   app.use("/", router);
 };
 
@@ -14,7 +15,7 @@ module.exports = app => {
  * @returns {object} 200 - Lista de articulos
  * @returns {Error}  500 - internal server error
  */
-router.get("/articles", (req, res, next) => {
+router.get("/articles", passport.authenticate('jwt', { session: false }), (req, res, next) => {
   db.Article.findAll()
     .then(articles => {
       res.status(200).json(articles);
@@ -32,13 +33,13 @@ router.get("/articles", (req, res, next) => {
  * @returns {object} 200 - OK
  * @returns {Error}  500 - internal server error
  */
-router.get("/articles/:id", (req, res, next) => {
+router.get("/articles/:id", passport.authenticate('jwt', { session: false }), (req, res, next) => {
   db.Article.find({ where: { id: req.params.id } })
     .then(article => {
       if (article) {
         res.status(200).json(article);
       } else {
-        res.status(404).send();
+        res.status(404).json({ message: 'no existe'});
       }
     })
     .catch(err => {
@@ -54,7 +55,7 @@ router.get("/articles/:id", (req, res, next) => {
  * @returns {object} 201 - OK
  * @returns {Error}  400 - Bad Request
  */
-router.post("/articles", (req, res, next) => {
+router.post("/articles", passport.authenticate('jwt', { session: false }), (req, res, next) => {
   return db.sequelize.transaction({ autocommit: false }, transaction => {
     return db.Article.create(req.body, { transaction })
       .then(article => {
@@ -74,7 +75,7 @@ router.post("/articles", (req, res, next) => {
  * @returns {object} 201 - OK
  * @returns {Error}  400 - Bad Request
  */
-router.put("/articles/:id", (req, res, next) => {
+router.put("/articles/:id", passport.authenticate('jwt', { session: false }), (req, res, next) => {
   return db.sequelize.transaction({ autocommit: false }, transaction => {
     return db.Article.find({ where: { id: req.params.id }}, { transaction })
       .then(article => {
@@ -99,7 +100,7 @@ router.put("/articles/:id", (req, res, next) => {
  * @returns {object} 202 - accepted
  * @returns {Error}  400 - Bad Request
  */
-router.delete("/articles/:id", (req, res, next) => {
+router.delete("/articles/:id", passport.authenticate('jwt', { session: false }), (req, res, next) => {
   return db.sequelize.transaction({ autocommit: false }, transaction => {
     return db.Article.find({ where: { id: req.params.id }}, { transaction })
       .then(article => {

@@ -12,6 +12,7 @@ const config = {
     port: process.env.PORT || defaultPort,
     db: "sqlite://localhost/demo-rest-api-development",
     storage: rootPath + "/data/demo-rest-api-development",
+    secret: "estoessupersecreto"
   },
 
   test: {
@@ -32,6 +33,7 @@ const config = {
     port: process.env.PORT || defaultPort,
     db: "sqlite://localhost/demo-rest-api-production",
     storage: rootPath + "/data/demo-rest-api-production",
+    secret: 'estoessupersecretoparausarenproduccion'
   }
 };
 
