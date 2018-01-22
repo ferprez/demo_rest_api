@@ -7,7 +7,7 @@ Demo of a simple REST API in Node.JS using Expresss.
 
 ## Getting Started
 
-Quickly describe how to install your project and how to get it running
+Clonar, instalar y probar :P
 
     # clone it
     git clone https://github.com/ferprez/demo_rest_api.git
