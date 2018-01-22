@@ -20,6 +20,54 @@ paths:
       responses:
         200:
           description: "Lista de articulos"
+    post:
+      parameters: []
+      description: Esta funcion crea un articulo
+      tags:
+      - 'articulos '
+      responses:
+        201:
+          description: " {}"
+  /articles/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Este Recurso devuelve articulos obtenidos desde la base de datos
+      tags:
+      - 'articulos '
+      responses:
+        200:
+          description: " {}"
+    put:
+      parameters: 
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Recurso para modificar un Articulo
+      tags:
+      - 'articulos '
+      responses:
+        201:
+          description: " {}"
+    delete:
+      parameters: 
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: number
+      description: Recurso para eliminar un Articulo
+      tags:
+      - 'articulos '
+      responses:
+        202:
+          description: " {}"
   /posts:
     get:
       parameters: []

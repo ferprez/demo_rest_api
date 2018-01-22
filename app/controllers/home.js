@@ -12,16 +12,3 @@ router.get('/', (req, res, next) => {
     title: 'Demo Node JS MVC',
   });
 });
-
-/**
- * Esta funcion devuelve articulos obtenidos desde la base de datos
- * @route GET /articles
- * @group articulos - Operacion para obtener lista de articulos
- * @returns {object} 200 - Lista de articulos
- * @returns {Error}  default - Unexpected error
- */
-router.get('/articles', (req, res, next) => {
-  db.Article.findAll().then((articles) => {
-    res.json(articles);
-  });
-});

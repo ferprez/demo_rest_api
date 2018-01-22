@@ -8,7 +8,7 @@ module.exports = app => {
 };
 
 /**
- * Esta funcion devuelve articulos obtenidos desde la base de datos
+ * Este Recurso devuelve articulos obtenidos desde la base de datos
  * @route GET /articles
  * @group articulos
  * @returns {object} 200 - Lista de articulos
