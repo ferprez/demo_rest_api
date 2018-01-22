@@ -21,6 +21,12 @@ Quickly describe how to install your project and how to get it running
 
     # Start production server:
     npm start
+    
+    # And go to
+    http://localhost:3000 
+    
+    # Swagger documentation
+    http://localhost:3000/api-docs
 
 
 Feel free to ask [Fernando Pérez](ferprez17@gmail.com) if you need some support when there are any questions left or if you need some support.
