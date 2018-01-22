@@ -29,4 +29,4 @@ Clonar, instalar y probar :P
     http://localhost:3000/api-docs
 
 
-Feel free to ask [Fernando Pérez](ferprez17@gmail.com) if you need some support when there are any questions left or if you need some support.
+Feel free to ask [Fernando Pérez](https://github.com/ferprez) if you need some support when there are any questions left or if you need some support.
