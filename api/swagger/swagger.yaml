@@ -11,6 +11,54 @@ schemes:
 - http
 swagger: '2.0'
 paths:
+  /login:
+    post:
+      description: Funcion que loguea a un usuario con la BD
+      tags:
+        - 'auth '
+      parameters: 
+        - in: body
+          name: usuario
+          description: El email del usuario a loguearse
+          schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+          responses:
+            200:
+              description: Ok
+  /registrar:
+    post:
+      description: Funcion que registra a un usuario en la BD
+      tags:
+        - 'auth '
+      parameters: 
+        - in: body
+          name: usuario
+          description: El email del usuario a loguearse
+          schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+          responses:
+            201:
+              description: Created
   /articles:
     get:
       parameters: []
@@ -147,3 +195,5 @@ tags:
   description: " Operacion con articulos"
 - name: 'posts '
   description: " Operaciones con Posts"
+- name: 'auth '
+  description: " Operaciones de Authenticacion"
