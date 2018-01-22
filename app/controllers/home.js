@@ -23,7 +23,7 @@ router.get('/', isLoggedIn, (req, res, next) => {
  * @route POST /login
  * @group auth
  * @returns {object} 200 - OK
- * @returns {Error}  500 - internal server error
+ * @returns {Error}  400 - bad request
  */
 router.post('/login', (req, res, next) => {
   console.log(req.body);
@@ -43,7 +43,7 @@ router.post('/login', (req, res, next) => {
         res.json({ success: true, token: "bearer " + token });
       })
       .catch(err => {
-        res.status(403).send({ success: true, message: err });
+        res.status(400).send({ success: false, message: (err.errors) ? err.errors[0].message : err.message });
       });
   }
   });
@@ -53,7 +53,7 @@ router.post('/login', (req, res, next) => {
  * @route POST /registrar
  * @group auth
  * @returns {object} 201 - OK
- * @returns {Error}  500 - internal server error
+ * @returns {Error}  400 - bad request
  */
 router.post('/registrar', (req, res, next) => {
   if(!req.body.email || !req.body.password){
@@ -71,7 +71,7 @@ router.post('/registrar', (req, res, next) => {
           res.status(201).json({ success: true, message: data });
         })
         .catch(function(err) {
-          res.status(403).json({ success: false, message: err.message });
+          res.status(400).json({ success: false, message: (err.errors) ? err.errors[0].message : err.message });
         })
   }
 });

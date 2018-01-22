@@ -130,11 +130,16 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJmaXJzdF9uYW1lIjoidXN1YXJpbyIsImxhc3RfbmFtZSI6InVzdWFyaW8iLCJpYXQiOjE1MTY2NDIwMTQsImV4cCI6MTUxNjcyODQxNH0.LjC1dGY-u47SOJNA049jWFznNkpB8uZ9xEaotuoT_3k",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\": \"prueba 11\",\n\t\"url\": \"http://prueba11.com\",\n\t\"text\":\"lorem ipsum\"\n}"
+					"raw": "{\n\t\"title\": \"prueba 2\",\n\t\"url\": \"http://prueba2.com\",\n\t\"text\":\"lorem ipsum\"\n}"
 				},
 				"description": ""
 			},
@@ -195,6 +200,46 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"urls\": \"http://yahoo.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Registro",
+			"request": {
+				"url": "http://localhost:3000/registrar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"12345\",\n\t\"firstName\": \"usuario\",\n\t\"lastName\": \"usuario\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:3000/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"12345\"\n}"
 				},
 				"description": ""
 			},

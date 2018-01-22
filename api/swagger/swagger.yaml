@@ -62,12 +62,16 @@ paths:
   /articles:
     get:
       parameters: []
+      security:
+        - APIKeyHeader: []
       description: Esta funcion devuelve articulos obtenidos desde la base de datos
       tags:
       - 'articulos '
       responses:
         200:
           description: "Lista de articulos"
+        401:
+          description: API key is missing or invalid
     post:
       parameters: []
       description: Esta funcion crea un articulo
@@ -189,7 +193,11 @@ paths:
 definitions: {}
 responses: {}
 parameters: {}
-securityDefinitions: {}
+securityDefinitions: 
+  APIKeyHeader:
+     type: apiKey
+     in: header
+     name: X-API-Key
 tags:
 - name: 'articulos '
   description: " Operacion con articulos"

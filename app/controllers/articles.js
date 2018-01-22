@@ -21,7 +21,7 @@ router.get("/articles", passport.authenticate('jwt', { session: false }), (req, 
       res.status(200).json(articles);
     })
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({ error: (err.errors) ? err.errors[0].message : err.message });
       throw new Error(err);
     });
 });
@@ -43,7 +43,7 @@ router.get("/articles/:id", passport.authenticate('jwt', { session: false }), (r
       }
     })
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({ error: (err.errors) ? err.errors[0].message : err.message });
       throw new Error(err);
     });
 });
@@ -62,7 +62,7 @@ router.post("/articles", passport.authenticate('jwt', { session: false }), (req,
         res.status(201).json(article);
       })
       .catch(err => {
-        res.status(400).json({ error: err });
+        res.status(400).json({ error: (err.errors) ? err.errors[0].message : err.message });
         throw new Error(err);
       });
   });
@@ -87,7 +87,7 @@ router.put("/articles/:id", passport.authenticate('jwt', { session: false }), (r
         }
       })
       .catch(err => {
-        res.status(400).json({ error: err });
+        res.status(400).json({ error: (err.errors) ? err.errors[0].message : err.message });
         throw new Error(err);
       });
   });
@@ -112,7 +112,7 @@ router.delete("/articles/:id", passport.authenticate('jwt', { session: false }),
         }
       })
       .catch(err => {
-        res.status(400).json({ error: err });
+        res.status(400).json({ error: (err.errors) ? err.errors[0].message : err.message });
         throw new Error(err);
       });
   });
