@@ -13,9 +13,9 @@ module.exports = app => {
 };
 
 /**
- * Esta funcion devuelve la lista de posts
+ * Este Recurso devuelve la lista de posts
  * @route GET /posts
- * @group posts - Operacion para obtener lista de posts
+ * @group posts
  * @returns {object} 200 - Lista de articulos
  * @returns {Error}  502 - bad gateway
  */
@@ -27,9 +27,9 @@ router.get("/posts", (req, res, next) => {
 });
 
 /**
- * Esta funcion devuelve un post especifico filtrado por id
+ * Este Recurso devuelve un post especifico filtrado por id
  * @route GET /posts/{id}
- * @group posts - Operacion para obtener post filtrado por id
+ * @group posts
  * @param {number} id.path.required - id
  * @returns {object} 200 - post
  * @returns {Error}  502 - bad gateway
@@ -42,9 +42,9 @@ router.get("/posts/:id", (req, res, next) => {
 });
 
 /**
- * Esta funcion crea un post
+ * Este Recurso crea un post
  * @route POST /posts
- * @group posts - Operacion para creacion de post
+ * @group posts
  * @returns {object} 201 - {}
  * @returns {Error}  502 - bad gateway
  */
@@ -61,9 +61,9 @@ router.post("/posts", (req, res, next) => {
 });
 
 /**
- * Esta funcion modifica un post
+ * Este Recurso modifica un post
  * @route PUT /posts/{id}
- * @group posts - Operacion para modificar un post
+ * @group posts
  * @param {number} id.path.required - id
  * @returns {object} 201 - {}
  * @returns {Error}  502 - bad gateway
@@ -80,9 +80,9 @@ router.put("/posts/:id", (req, res, next) => {
 });
 
 /**
- * Esta funcion modifica un atributos especificos de un post
+ * Este Recurso modifica un atributos especificos de un post
  * @route PUT /posts/{id}
- * @group posts - Operacion para modificar un post
+ * @group posts
  * @param {number} id.path.required - id
  * @returns {object} 201 - {}
  * @returns {Error}  502 - bad gateway
@@ -99,9 +99,9 @@ router.patch("/posts/:id", (req, res, next) => {
 });
 
 /**
- * Esta funcion borra un post
+ * Este Recurso borra un post
  * @route DELETE /posts/{id}
- * @group posts - Operacion para borrar un post
+ * @group posts
  * @param {number} id.path.required - id
  * @returns {object} 201 - {}
  * @returns {Error}  502 - bad gateway

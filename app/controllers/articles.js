@@ -26,10 +26,32 @@ router.get("/articles", (req, res, next) => {
 });
 
 /**
+ * Este Recurso devuelve un articulo especifico filtrado por id
+ * @route GET /articles
+ * @group articulos
+ * @returns {object} 200 - OK
+ * @returns {Error}  500 - internal server error
+ */
+router.get("/articles/:id", (req, res, next) => {
+  db.Article.find({ where: { id: req.params.id } })
+    .then(article => {
+      if (article) {
+        res.status(200).json(article);
+      } else {
+        res.status(404).send();
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err });
+      throw new Error(err);
+    });
+});
+
+/**
  * Recurso para creacion de Articulo
  * @route POST /articles
  * @group articulos
- * @returns {object} 201 - Articulo
+ * @returns {object} 201 - OK
  * @returns {Error}  400 - Bad Request
  */
 router.post("/articles", (req, res, next) => {
@@ -49,7 +71,7 @@ router.post("/articles", (req, res, next) => {
  * Recurso para modificar un Articulo
  * @route PUT /articles
  * @group articulos
- * @returns {object} 201 - Articulo
+ * @returns {object} 201 - OK
  * @returns {Error}  400 - Bad Request
  */
 router.put("/articles/:id", (req, res, next) => {
@@ -82,7 +104,6 @@ router.delete("/articles/:id", (req, res, next) => {
     return db.Article.find({ where: { id: req.params.id }}, { transaction })
       .then(article => {
         if(article){
-          console.log(article);
           article.destroy();
           res.status(202).send();
         } else {
