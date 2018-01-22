@@ -1,0 +1,204 @@
+{
+	"variables": [],
+	"info": {
+		"name": "demo_api_node",
+		"_postman_id": "ddb7c1f7-98f4-333d-c40e-46bc8948a98e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Posts",
+			"request": {
+				"url": "http://localhost:3000/posts",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Metodo para obtener posts"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Post",
+			"request": {
+				"url": "http://localhost:3000/posts/13",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Metodo para eliminar post de la colleccion"
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Post",
+			"request": {
+				"url": "http://localhost:3000/posts/12",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"foobar\" }"
+				},
+				"description": "Metodo para hacer update sobre una o varias propiedades de un post"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Post",
+			"request": {
+				"url": "http://localhost:3000/posts/14",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"foo\", \"body\": \"asdfasdf\", \"userId\": 100 }"
+				},
+				"description": "Metodo para actualizar post"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Post",
+			"request": {
+				"url": "http://localhost:3000/posts/50",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Metodo para obtener post por el id utilizando parametros de ruta"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Post",
+			"request": {
+				"url": "http://localhost:3000/posts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"prueba\", \"body\": \"prueba 2\", \"userId\": 6 }"
+				},
+				"description": "Metodo para creacion de post"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Articulos",
+			"request": {
+				"url": "http://localhost:3000/articles",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"urls\": \"http://yahoo.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Articulo",
+			"request": {
+				"url": "http://localhost:3000/articles",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"prueba 11\",\n\t\"url\": \"http://prueba11.com\",\n\t\"text\":\"lorem ipsum\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Articulo",
+			"request": {
+				"url": "http://localhost:3000/articles/6",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\": \"http://yahoo.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Articulo",
+			"request": {
+				"url": "http://localhost:3000/articles/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener articulo",
+			"request": {
+				"url": "http://localhost:3000/articles/6",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"urls\": \"http://yahoo.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
